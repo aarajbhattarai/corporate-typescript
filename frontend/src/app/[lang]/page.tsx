@@ -3,7 +3,9 @@ import { sectionRenderer } from './utils/section-renderer';
 
 async function getPageBySlug(slug: string, lang: string) {
     const token = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
-
+//     console.log("Define");
+//     console.log(lang);
+//     console.log("afterma");
     const path = `/pages`;
     const urlParamsObject = { filters: { slug }, locale: lang };
     const options = { headers: { Authorization: `Bearer ${token}` } };
@@ -12,6 +14,7 @@ async function getPageBySlug(slug: string, lang: string) {
 }
 
 export default async function RootRoute({ params }: { params: { lang: string } }) {
+    console.log(params.lang);
     const page = await getPageBySlug('home', params.lang);
     const contentSections = page.data[0].attributes.contentSections;
 

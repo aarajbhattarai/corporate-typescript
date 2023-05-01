@@ -10,9 +10,11 @@ export async function fetchAPI(path: string, urlParamsObject = {}, options = {})
     },
     ...options,
   };
-
+  // console.log(urlParamsObject);
+  // console.log("After");
   // Build request URL
   const queryString = qs.stringify(urlParamsObject);
+  // console.log(queryString);
   const requestUrl = `${getStrapiURL(
     `/api${path}${queryString ? `?${queryString}` : ""}`
   )}`;
